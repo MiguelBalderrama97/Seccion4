@@ -1,5 +1,7 @@
 package com.example.miguel.seccion4_prueba.Models;
 
+import com.example.miguel.seccion4_prueba.App.MyApplication;
+
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class Board extends RealmObject {
     public Board(){}
 
     public Board(String title){
-        this.id = 0;
+        this.id = MyApplication.BoardID.incrementAndGet();;
         this.title = title;
         this.createdAt = new Date();
         this.notes = new RealmList<Note>();
