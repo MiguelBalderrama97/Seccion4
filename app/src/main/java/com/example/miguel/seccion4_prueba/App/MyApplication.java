@@ -8,6 +8,7 @@ import com.example.miguel.seccion4_prueba.Models.Note;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 
@@ -19,10 +20,16 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        setUpRealmConfig();
         Realm realm = Realm.getDefaultInstance();
         BoardID = getIdByTable(realm, Board.class);
         NoteID = getIdByTable(realm, Note.class);
         realm.close();
+    }
+
+    private void setUpRealmConfig(){
+        RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build();
+        Realm.setDefaultConfiguration(config);
     }
 
 //    METODO PARA AUTOINCREMENT
