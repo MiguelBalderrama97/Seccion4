@@ -24,7 +24,7 @@ public class Board extends RealmObject {
     public Board(){}
 
     public Board(String title){
-        this.id = MyApplication.BoardID.incrementAndGet();;
+        this.id = MyApplication.BoardID.incrementAndGet();
         this.title = title;
         this.createdAt = new Date();
         this.notes = new RealmList<Note>();
