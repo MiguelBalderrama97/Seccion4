@@ -10,22 +10,34 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.miguel.seccion4_prueba.Models.Board;
 import com.example.miguel.seccion4_prueba.R;
+
+import io.realm.Realm;
 
 public class BoardActivity extends AppCompatActivity {
 
     private FloatingActionButton fab;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
-        fab = findViewById(R.id.fabAddBoard);
+//        DB Realm
+        realm = Realm.getDefaultInstance();
 
-        showAlertForCreatingBoard("Title", "Message");
+        fab = findViewById(R.id.fabAddBoard);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertForCreatingBoard("Title", "Message");
+            }
+        });
     }
 
+//    DIALOGS
     private void showAlertForCreatingBoard(String title, String msg){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -57,7 +69,11 @@ public class BoardActivity extends AppCompatActivity {
         dialog.show();
     }
 
+//    CRUD ACTIONS
     private void createNewBoard(String boardName){
-
+        realm.beginTransaction();
+        Board board = new Board(boardName);
+        realm.copyToRealm(board);
+        realm.commitTransaction();
     }
 }
