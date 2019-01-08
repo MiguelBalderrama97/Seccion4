@@ -19,7 +19,7 @@ public class Board extends RealmObject {
     @Required
     private Date createdAt;
 
-    private List<Note> notes;
+    private RealmList<Note> notes;
 
     public Board(){}
 
@@ -29,13 +29,8 @@ public class Board extends RealmObject {
         this.createdAt = new Date();
         this.notes = new RealmList<Note>();
     }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -50,15 +45,7 @@ public class Board extends RealmObject {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public List<Note> getNotes() {
+    public RealmList<Note> getNotes() {
         return notes;
-    }
-
-    public void setNotes(List<Note> notes) {
-        this.notes = notes;
     }
 }

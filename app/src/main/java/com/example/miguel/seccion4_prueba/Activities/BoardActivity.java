@@ -45,7 +45,7 @@ public class BoardActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertForCreatingBoard("Title", "Message");
+                showAlertForCreatingBoard("Add New Board", "Type a name for your new board");
             }
         });
     }

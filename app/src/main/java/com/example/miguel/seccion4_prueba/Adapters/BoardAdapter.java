@@ -50,7 +50,7 @@ public class BoardAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(layout,null);
             vh = new ViewHolder();
             vh.title = convertView.findViewById(R.id.textViewBoardTitle);
-            vh.cretedAt = convertView.findViewById(R.id.textViewBoardDate);
+            vh.createdAt = convertView.findViewById(R.id.textViewBoardDate);
             vh.notes = convertView.findViewById(R.id.textViewBoardNotes);
             convertView.setTag(vh);
         }else{
@@ -68,16 +68,16 @@ public class BoardAdapter extends BaseAdapter {
         }
         vh.notes.setText(textForNotes);
 
-        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String cretaedAt = df.format(board.getCreatedAt());
 
-        vh.cretedAt.setText(cretaedAt);
+        vh.createdAt.setText(cretaedAt);
         return convertView;
     }
 
     public class ViewHolder{
         TextView title;
         TextView notes;
-        TextView cretedAt;
+        TextView createdAt;
     }
 }

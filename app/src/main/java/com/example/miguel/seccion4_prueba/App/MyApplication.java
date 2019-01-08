@@ -19,12 +19,12 @@ public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         setUpRealmConfig();
         Realm realm = Realm.getDefaultInstance();
         BoardID = getIdByTable(realm, Board.class);
         NoteID = getIdByTable(realm, Note.class);
         realm.close();
+        super.onCreate();
     }
 
     private void setUpRealmConfig(){
